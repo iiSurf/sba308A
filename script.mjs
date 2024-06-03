@@ -1,4 +1,5 @@
 async function fetchData() {
+   try {
     // Two lines. Fetches data. All we need in most cases
     const result = await fetch("https://pokeapi.co/api/v2/pokemon");
     const data = await result.json();
@@ -14,6 +15,8 @@ async function fetchData() {
       // displays the element by appending it to the body
       document.querySelector("body").appendChild(nameDisplay);
     }
+  } catch {
+        console.error(`Error fetching the data`, error);
   }
-  
+}
   fetchData();
