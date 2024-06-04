@@ -28,3 +28,27 @@
 // // calling function to get pokemon names
 //   fetchData();
 
+const weatherForm = document.querySelector(`.weatherForm`);
+const cityInput = document.querySelector(`.cityInput`);
+const card = document.querySelector(`.card`);
+const apiKey = `ac02961644ed16590131f023dcb8e82b`;
+
+weatherForm.addEventListener(`submit`, event => {
+
+});
+
+async function getWeatherData(city) {
+
+}
+
+function displayWeatherInfo(data) {
+
+}
+
+function getWeatherEmoji(weatherId) {
+
+}
+
+function displayError(message) {
+
+}
