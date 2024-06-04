@@ -8,8 +8,19 @@
     <script defer src="./script.mjs"></script>
 </head>
 <body>
-    <div id="pokePokeContainer">
+    <!-- <div id="pokePokeContainer"></div> -->
+    <form class="weatherForm">
+        <input type="text" class="cityInput" placeholder="Enter city">
+        <button type="submit">Get weather</button>
+    </form>
 
+    <div class="card">
+        <h1 class="cityDisplay">Seattle</h1>
+        <p class="tempDisplay">90°</p>
+        <p class="humidityDisplay">Humidity: 75%</p>
+        <p class="describeDisplay">Clear Skies</p>
+        <p class="weatherEmoji">🌞</p>
+        <p class="errorDisplay">Please enter a city</p>
     </div>
 </body>
 </html>
