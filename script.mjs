@@ -3,20 +3,20 @@
 //     // Two lines. Fetches data. All we need in most cases
 //     const result = await fetch("https://pokeapi.co/api/v2/pokemon");
 //     const data = await result.json();
-  
+
 //     // using pokePokeContainer div from html
 //     const pokemonContainer = document.getElementById(`pokePokeContainer`);
 //     // Loops through the list of pokemon fetched from the api
 //     for (let i = 0; i < data.results.length; i++) {
 //       // create a new h1 element
 //       const nameDisplay = document.createElement("h1");
-  
+
 //       // sets the text of the element to pokemons name
 //       nameDisplay.innerText = data.results[i].name;
 
 //       // Append to container
 //       pokemonContainer.appendChild(nameDisplay);
-  
+
 //       // displays the element by appending it to the body
 //       document.querySelector("body").appendChild(nameDisplay);
 //     }
@@ -42,7 +42,7 @@ weatherForm.addEventListener(`submit`, async event => {
             const weatherData = await getWeatherData(city);
             displayWeatherInfo(weatherData);
         }
-        catch(error) {
+        catch (error) {
             console.error(error);
             displayError(error);
         }
@@ -55,19 +55,51 @@ async function getWeatherData(city) {
     const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`;
 
     const response = await fetch(apiUrl);
-    
-    if(!response.ok) {
+    // console.log(response);
+
+    if (!response.ok) {
         throw new Error(`Could not fetch weather data`);
     }
     return await response.json();
 }
 
 function displayWeatherInfo(data) {
+    // console.log(data);
+    const { name: city,
+            main: { temp, humidity },
+            weather: [{ description, id }]} = data;
+
+            card.textContent = ``;
+            card.style.display = `flex`;
+
+            const cityDisplay = document.createElement(`h1`);
+            const tempDisplay = document.createElement(`p`);
+            const humidityDisplay = document.createElement(`p`);
+            const descriptionDisplay = document.createElement(`p`);
+            const weatherEmoji = document.createElement(`p`);
+
+            cityDisplay.textContent = city;
+            tempDisplay.textContent = `${((temp - 273.15) * 9/5 + 32).toFixed(1)}°F`;
+            humidityDisplay.textContent = `Humidity: ${humidity}%`;
+            descriptionDisplay.textContent = description;
+            weatherEmoji.textContent = getWeatherEmoji(id);
+
+            cityDisplay.classList.add(`cityDisplay`);
+            tempDisplay.classList.add(`tempDisplay`);
+            humidityDisplay.classList.add(`humidityDisplay`);
+            descriptionDisplay.classList.add(`descriptionDisplay`);
+            weatherEmoji.classList.add(`weatherEmoji`);
+
+            card.appendChild(cityDisplay);
+            card.appendChild(tempDisplay);
+            card.appendChild(humidityDisplay);
+            card.appendChild(descriptionDisplay);
+            card.appendChild(weatherEmoji);
 
 }
 
 function getWeatherEmoji(weatherId) {
-
+    
 }
 
 function displayError(message) {
