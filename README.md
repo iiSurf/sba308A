@@ -2,6 +2,10 @@
 > [!Note]
 > I made a weather API where you type in any city you like and my application will tell you the weather conditions for that city!
 
+#### Link to the Live Site:
+
+- [Weather App](https://iisurf.github.io/sba308A/)
+
 #### My very first API and I am very pleased that it is working. Definitely a major learning curve but got it done.
 
 #### What could you have done differently during the planning stages of your project to make the execution easier?
